@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.group7.MovieApp.movie.IMovieDAO">
+  		<resultMap id="movieResult" type="com.group7.MovieApp.movie.MovieVO">
+			<result property="userId" column="userId" />
+	        <result property="movieId" column="movieId" />
+	        <result property="movieTitle" column="movieTitle" />
+	        <result property="movieRuntime" column="movieRuntime" />
+	        <result property="moviePost" column="moviePost" />
+		</resultMap> 
+		
+		<!-- 찜 등록 -->
+		<insert id="insertLikeList" parameterType="com.group7.MovieApp.movie.MovieVO">
+			INSERT INTO likeList
+			VALUES (#{userId}, #{movieId}, #{movieTitle}, #{movieRuntime}, #{moviePost})
+		</insert>
+		
+		<!-- 찜 정보 조회 -->
+		<select id="likeListView" resultMap="movieResult">							  
+			SELECT * FROM likeList WHERE userId= #{userId} 		
+		</select>
+
+		
+   </mapper>
+   
+   
+   
