@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.group7.MovieApp.member.IMemberDAO">
+	<resultMap id="userResult"
+		type="com.group7.MovieApp.member.MemberVO">
+		<result property="userId" column="userId" />
+		<result property="userPwd" column="userPwd" />
+		<result property="userName" column="userName" />
+		<result property="userEmail" column="userEmail" />
+
+	</resultMap>
+
+	<!-- 로그인 확인 -->
+	<select id="login" resultMap="userResult"
+		parameterType="hashmap">
+		SELECT * FROM user WHERE userId=#{userId} AND userPwd=#{userPwd}
+	</select>
+	<!-- ID 중복 확인 -->
+	<select id="idCheck" resultType="string"
+		parameterType="string">
+		SELECT userId FROM user WHERE userId =#{userId}
+	</select>
+	<insert id="join" parameterType="com.group7.MovieApp.member.MemberVO">
+		INSERT INTO user(userId, userPwd, userName, userEmail)
+		VALUES (#{userId}, #{userPwd}, #{userName}, #{userEmail})
+	</insert>
+</mapper>
