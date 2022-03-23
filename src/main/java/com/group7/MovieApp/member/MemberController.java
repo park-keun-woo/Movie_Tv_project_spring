@@ -23,8 +23,11 @@ public class MemberController {
 	
 	//회원가입 
 	@RequestMapping(value="/join")
-	public void join(MemberVO vo) {
+	public String join(MemberVO vo) {
 		service.join(vo);	
+		
+		String result = "gogo";
+		return result;
 	}
 	
 	
@@ -35,32 +38,46 @@ public class MemberController {
 		String userId_result = service.idCheck(userId);
 
 		String result = "use";
+		
 		if (userId_result != null) // prdNo_result가 받은 값이 있으면 (널이 아니면)
 			result = "no_use";
 		
 		return result;
 	}
 
-	//로그인 
-	@RequestMapping(value="/login")
-	public String loginCheck(@PathVariable HashMap<String, Object> param,
-			@PathVariable String userId,
-			@PathVariable String userPwd) {
+////	//로그인 
+//	@RequestMapping(value="/login")
+//	public String login(MemberVO vo) {		
+//		service.login(vo);
+//		
+//		String result = "fail";
+//		if(vo != null) {
+//			result = "success";
+//		}
+//		System.out.println(result);
+//		return result;
+//	}
 
-        // 로그인 체크 결과
-        MemberVO vo = service.login(param);
-     
-        String result = "success";
-        System.out.println("userPwd : " + userPwd);
-       System. out.println("vo : " + vo);
-      
-        if(vo != null ) {
-   
-            result = "success";
-        }
-        return result;
-    
-    }
+	@RequestMapping(value="/login")
+	public void login(@RequestParam HashMap<String, Object> param) {
+	
+		
+		System.out.println(param);
+		MemberVO vo = service.login(param);
+
+		String result = "result";
+		
+		if(vo != null) {
+			result = "success";
+		}else {
+			result = "fail";
+		}
+		
+		System.out.println(result);
+
+	}
+
+
 
 
 	// 로그아웃

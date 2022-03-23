@@ -31,6 +31,16 @@ public class MemberVO{
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
+	
+	@Override
+	public String toString() {
+		return "MemberVO [userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPwd="
+				+ userPwd + ", getUserId()=" + getUserId() + ", getUserName()=" + getUserName() + ", getUserEmail()="
+				+ getUserEmail() + ", getUserPwd()=" + getUserPwd() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 
 	
 	
