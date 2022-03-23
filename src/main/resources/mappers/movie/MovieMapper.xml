@@ -22,7 +22,11 @@
 		<select id="likeListView" resultMap="movieResult">							  
 			SELECT * FROM likeList WHERE userId= #{userId} 		
 		</select>
-
+		
+		<!-- 찜 목록 삭제 -->
+		<delete id="deleteLikeList" parameterType="string">
+			DELETE FROM likeList WHERE movieId=#{movieId}
+		</delete>
 		
    </mapper>
    
