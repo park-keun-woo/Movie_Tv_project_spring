@@ -28,5 +28,10 @@ public class MovieController {
 		map.put("likeList", service.likeListView(userId));
 		return map;
 	}
+  
+	@RequestMapping(value="/movie/delete/{movieNo}")
+	public void deleteLikeList(@PathVariable String movieNo) {
+		service.deleteLikeList(movieNo);
+	}
 
 }

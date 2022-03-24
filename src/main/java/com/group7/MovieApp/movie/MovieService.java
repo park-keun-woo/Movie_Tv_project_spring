@@ -23,5 +23,10 @@ public class MovieService implements IMovieService {
 	public void insertLikeList(MovieVO movieVO) {
 		dao.insertLikeList(movieVO);
 	}
+	
+	@Override
+	public void deleteLikeList(String movieId) {
+		dao.deleteLikeList(movieId);
+	}
 
 }
