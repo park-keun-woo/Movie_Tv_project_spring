@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @CrossOrigin("*") // http://127.0.0.1 또는 localhost 다 사용하도록
 @RestController
 public class MovieController {
 	
 	@Autowired
 	MovieService service;
+	
 	
 	@RequestMapping(value="/movie/insertLikeList")
 	public void insertLikeList(MovieVO movieVO) {
@@ -26,9 +28,10 @@ public class MovieController {
 		map.put("likeList", service.likeListView(userId));
 		return map;
 	}
-	
+  
 	@RequestMapping(value="/movie/delete/{movieNo}")
 	public void deleteLikeList(@PathVariable String movieNo) {
 		service.deleteLikeList(movieNo);
 	}
+
 }
