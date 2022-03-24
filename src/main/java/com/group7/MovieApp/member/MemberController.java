@@ -59,7 +59,7 @@ public class MemberController {
 //	}
 
 	@RequestMapping(value="/login")
-	public void login(@RequestParam HashMap<String, Object> param) {
+	public String login(@RequestParam HashMap<String, Object> param) {
 	
 		
 		System.out.println(param);
@@ -74,6 +74,7 @@ public class MemberController {
 		}
 		
 		System.out.println(result);
+		return result;
 
 	}
 
