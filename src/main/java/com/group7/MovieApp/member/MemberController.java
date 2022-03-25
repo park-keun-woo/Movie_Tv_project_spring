@@ -21,6 +21,8 @@ public class MemberController {
 	@Autowired 
 	MemberService service;	
 	
+	String sessionId= "";
+	
 	//회원가입 
 	@RequestMapping(value="/join")
 	public String join(MemberVO vo) {
@@ -59,25 +61,25 @@ public class MemberController {
 //	}
 
 	@RequestMapping(value="/login")
-	public String login(@RequestParam HashMap<String, Object> param) {
-	
+	public String login(@RequestParam HashMap<String, Object> param, MemberVO vo) {	
 		
-		System.out.println(param);
-		MemberVO vo = service.login(param);
-
-		String result = "result";
+		MemberVO resultvo = service.login(param);
+//		System.out.println(param.get("userId"));
+//		System.out.println(param.get("userPwd"));
 		
-		if(vo != null) {
+		
+		String result = "";
+		
+		if(resultvo != null) {
 			result = "success";
 		}else {
 			result = "fail";
 		}
-		
 		System.out.println(result);
 		return result;
-
-	}
-
+		}
+	
+	
 
 
 
