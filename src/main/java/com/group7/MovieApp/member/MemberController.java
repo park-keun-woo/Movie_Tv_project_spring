@@ -21,10 +21,8 @@ public class MemberController {
 	@Autowired 
 	MemberService service;	
 	
-	String sessionId= "";
-	
 	//회원가입 
-	@RequestMapping(value="/join")
+	@RequestMapping("/join")
 	public String join(MemberVO vo) {
 		service.join(vo);	
 		
@@ -60,14 +58,13 @@ public class MemberController {
 //		return result;
 //	}
 
-	@RequestMapping(value="/login")
+	@RequestMapping("/loginCheck")
 	public String login(@RequestParam HashMap<String, Object> param, MemberVO vo) {	
 		
 		MemberVO resultvo = service.login(param);
 //		System.out.println(param.get("userId"));
 //		System.out.println(param.get("userPwd"));
-		
-		
+			
 		String result = "";
 		
 		if(resultvo != null) {
@@ -78,15 +75,13 @@ public class MemberController {
 		System.out.println(result);
 		return result;
 		}
-	
-	
-
 
 
 	// 로그아웃
-	@RequestMapping(value="/logout")
+	@RequestMapping("/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
+		String result = "success"; 
 	}
 	
 

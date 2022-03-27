@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.group7.MovieApp.member.IMemberDAO;
 import com.group7.MovieApp.member.MemberController;
-import com.group7.MovieApp.member.MemberService;
 import com.group7.MovieApp.movie.IMovieDAO;
 import com.group7.MovieApp.movie.MovieController;
 
